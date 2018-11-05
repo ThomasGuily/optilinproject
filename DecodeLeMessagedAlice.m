@@ -5,7 +5,7 @@
 clear all; clc; 
 
 % load la matrice d'encodage et le message d'Alice transmis par le canal: 
-load messagedAlice
+load ('messagedAlice'); 
 
 % Utilisez votre algorithme pour résoudre:
 % 
