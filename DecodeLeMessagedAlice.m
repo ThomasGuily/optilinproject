@@ -12,7 +12,7 @@ load ('messagedAlice.mat');
 %   min_{0 <= xprime <= 1} ||A*xprime - yprime||_2^2 
 %
 % Rem. La solution xprime devrait être un vecteur de taille 98x1
-[xprime,C,c,f] = votrealgorithme(A,yprime); 
+[xprime] = votrealgorithme(A,yprime); 
 
 % Affichez le résultat: 
 fprintf('The recovered message is: %s \n', decoding_bin(xprime,d)); 
