@@ -7,6 +7,7 @@ function [xprime] = votrealgorithme(A,yprime)
 a = size (A);
 n = a(2);
 m = a(1);
+
 %Dimensions de la matrice A
 
 C = zeros(2*m + 2*n, m + n);
