@@ -7,7 +7,7 @@
 clear all; clc; 
  
 % Message à envoyer
-my_mess = 'je vous félicite!'; 
+my_mess = 'Bravo !'; 
 fprintf('The encoded message is: %s \n', my_mess)
 
 % Message sous forme binaire
@@ -32,13 +32,7 @@ yprime = noisychannel(y,percenterror);
 
 
 
-bool = input ('0 = continuous; 1 = integers: entrer le booleen: ');
-if bool < 1
-  fprintf('Vous avez choisi la solution relaxée du problème %d \n');
-endif
-if bool > 0
-  fprintf('Vous avez choisi la résolution non continue (les variables seront binaire) %d \n');
-endif
+bool = 0;
 %fprintf('The recovered message is: %s \n', decoding_bin(yprime,d)); %pour observer que le message ne peut être récupérer
 
 
@@ -46,17 +40,16 @@ endif
 % 
 %   min_{0 <= xprime <= 1} ||A*xprime - yprime||_2^2 
  
-[xprime,n] = votrealgorithme(A,yprime,bool); 
+[xprime] = votrealgorithme(A,yprime,bool,n,m); 
 
-xp = zeros (n,1);
 
-for i= 1:n
-  xprime (i) = round (xprime(i));
-  %arrondir solution obtenues (xi)
-  xp(i)=xprime(i);
+
+for j= 1 : n 
+    xp(j) = xprime(j);
+    xp(j) = round (xp(j));
+    %arrondir solution obtenue  
 endfor
-
-%arrondir chacunes valeurs du vecteurs trouvé (énoncer)
+xp = vec(xp);
 
 fprintf('The error is %d \n', norm(x-xp)); 
 fprintf('The recovered message is: %s \n', decoding_bin(xp,d));   
