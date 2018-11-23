@@ -4,14 +4,18 @@
 
 clear all; clc; 
 addpath ('C:/Inge/avoir/opti/lin');
+
 % load la matrice d'encodage et le message d'Alice transmis par le canal: 
 load ('messagedAlice.mat'); 
 
 a = size(A);
 n= a(2);
 m = 4*n;
-%valeurs n et m reprises
+%dimensions n et m du problème reprises$
+
 bool = 0;
+%uniquement relaxation
+
 % Utilisez votre algorithme pour résoudre:
 % 
 %   min_{0 <= xprime <= 1} ||A*xprime - yprime||_2^2 
@@ -23,11 +27,10 @@ bool = 0;
 
 
 
-xprime = resize(xprime, n);
-%virer les ti inutiles
 
 for j= 1 : n 
     xp(j) = xprime(j);
+    %virer les ti inutiles
     xp(j) = round (xp(j));
     %arrondir solution obtenue  
   endfor

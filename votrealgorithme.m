@@ -7,7 +7,7 @@ function [xprime,extra] = votrealgorithme(A,yprime,bool,n,m)
 
 
 
-%C =(2*m + 2*n, m + n);
+%dim C =(2*m + 2*n, m + n);
 N = eye(n);
 M = eye(m);
 B = zeros (n,m);
@@ -15,7 +15,7 @@ C = [N, B ; -N, B; A, M ; -A, M];
 
 %Matrice de contraintes
 
-%c =(2*m + 2*n, 1);
+%dim c =(2*m + 2*n, 1);
 c = [zeros(n,1); zeros(n,1)-1; yprime; -yprime];
 
 %Vecteur de contraintes
@@ -28,7 +28,7 @@ endfor
 %Pour chaques contraintes; le type est >=
 
 
-f = zeros (n + m,1);
+%dim f = zeros (n + m,1);
 
 for i = 1: n+m
   
@@ -45,13 +45,14 @@ endfor
 %Coefficients fonction objectif
 
 if bool < 1
+  %cas de résolution continue (relaxation)
   for i = 1 : n + m
     vtype(i) = "C";
   endfor
 endif
 
 if bool > 0
-  
+  %cas de résolution entière
   for i = 1 : n + m
     
     if i <=n
@@ -65,9 +66,8 @@ if bool > 0
   endfor
   
 endif
-%chaques variables est de type continue (vecteur de taille n+m soit nombre de variables pour cette relaxation)
+
 [xprime, fmin,errnum, extra] = glpk (f, C, c, [], [], ctype, vtype, 1);
-%fprintf('%f\n', xprime);
-%fprintf('%f\n', errnum);
+
 
 %xprime = zeros(size(A,2),1); % solution triviale

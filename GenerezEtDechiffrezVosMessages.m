@@ -7,7 +7,7 @@
 clear all; clc; 
  
 % Message à envoyer
-my_mess = 'Bravo !'; 
+my_mess = 'Bravo!'; 
 fprintf('The encoded message is: %s \n', my_mess)
 
 % Message sous forme binaire
@@ -46,10 +46,12 @@ bool = 0;
 
 for j= 1 : n 
     xp(j) = xprime(j);
+    %virer les ti inutiles
     xp(j) = round (xp(j));
-    %arrondir solution obtenue  
-endfor
+    %arrondir solution obtenue 
+    endfor
 xp = vec(xp);
 
 fprintf('The error is %d \n', norm(x-xp)); 
+%il s'agit d'une erreur absolue !
 fprintf('The recovered message is: %s \n', decoding_bin(xp,d));   
