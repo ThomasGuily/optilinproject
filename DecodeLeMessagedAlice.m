@@ -3,7 +3,7 @@
 % Décodez le message d'Alice... 
 
 clear all; clc; 
-addpath ('C:/Inge/avoir/opti/lin');
+
 
 % load la matrice d'encodage et le message d'Alice transmis par le canal: 
 load ('messagedAlice.mat'); 
